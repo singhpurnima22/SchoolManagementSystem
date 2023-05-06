@@ -12,9 +12,6 @@ import com.school.model.Student;
 import com.school.model.Subject;
 import com.school.model.Teacher;
 
-
-
-
 public class HyberConfig {
 	public static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration();

@@ -22,14 +22,14 @@ public class StudentOperation {
 	public void addStudent(String stname, Integer classId) {
 		Session session = sf.openSession();
 		Transaction tr = session.beginTransaction();
-		
+
 		ClassesOperation co = new ClassesOperation();
-		Classes cl= co.getClassById(classId);
-		
-		Student st=new Student();
+		Classes cl = co.getClassById(classId);
+
+		Student st = new Student();
 		st.setStudentName(stname);
 		st.setClassobj(cl);
-		
+
 		/*
 		 * List<Student> studentList = new ArrayList<>(); studentList.add(st);
 		 * cl.setStudentList(studentList);

@@ -34,17 +34,17 @@ public class ClassesOperation {
 
 	public List<Classes> showAll() {
 		List<Classes> clsall = null;
-		try(Session session = sf.openSession()){
+		try (Session session = sf.openSession()) {
 			TypedQuery qry = session.createQuery("from Classes");
 			clsall = qry.getResultList();
 		}
-		
+
 		return clsall;
 
 	}
 
 	public void assignSubject(String classId, String[] subIds) {
-		try(Session session = sf.openSession()){
+		try (Session session = sf.openSession()) {
 			Transaction tr = session.beginTransaction();
 
 			// get Classes object using classId
@@ -56,8 +56,8 @@ public class ClassesOperation {
 			List<Subject> subList = new ArrayList<>();
 			SubjectOperation so = new SubjectOperation();
 			subList = so.getSubjectByIds(subIds);
-			
-			for(Subject s : subList) {
+
+			for (Subject s : subList) {
 				s.setClassobj(cs);
 				session.saveOrUpdate(s);
 			}
@@ -68,15 +68,14 @@ public class ClassesOperation {
 		}
 	}
 
-	public void assignTeacherToSubject(Subject sub, 
-			List<Teacher> teacherList) {
+	public void assignTeacherToSubject(Subject sub, List<Teacher> teacherList) {
 		Session session = sf.openSession();
 		Transaction tr = session.beginTransaction();
-		
+
 		Classes cs = sub.getClassobj();
-		cs.setTeacherlist(teacherList);		
+		cs.setTeacherlist(teacherList);
 	}
-	
+
 	public void assignStudent(Classes cs, Student student) {
 		Session session = sf.openSession();
 		Transaction tr = session.beginTransaction();
@@ -87,34 +86,32 @@ public class ClassesOperation {
 		tr.commit();
 		session.close();
 	}
-	
+
 	public Classes getClassById(Integer classId) {
 		Classes cls = null;
-		try(Session session = sf.openSession()){
-			TypedQuery qry = session.createQuery("from Classes where classId="+classId);
+		try (Session session = sf.openSession()) {
+			TypedQuery qry = session.createQuery("from Classes where classId=" + classId);
 			cls = (Classes) qry.getSingleResult();
 		}
-		
+
 		return cls;
 
 	}
 
 	public List<Classes> getClassByIds(String[] classIds) {
-		
+
 		List<Classes> clsall = new ArrayList<>();
-		try(Session session = sf.openSession()){
+		try (Session session = sf.openSession()) {
 			List<Integer> clsIdList = new ArrayList<>();
-			for (int i = 0; i<classIds.length; i++) {
+			for (int i = 0; i < classIds.length; i++) {
 				clsIdList.add(Integer.parseInt(classIds[i]));
 			}
-			
-			TypedQuery qry = session.createQuery("from Classes where classID in :clsIds")
-					.setParameterList("clsIds", clsIdList);
+
+			TypedQuery qry = session.createQuery("from Classes where classID in :clsIds").setParameterList("clsIds",
+					clsIdList);
 			clsall = qry.getResultList();
 		}
-		
-		
-		
+
 		return clsall;
-}
+	}
 }

@@ -21,31 +21,32 @@ import com.school.model.Student;
 @WebServlet("/AssignSubject")
 public class AssignSubject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AssignSubject() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String classId=request.getParameter("txtclassId");
-		String[] subIds =request.getParameterValues("subId");
-		//String dob=request.getParameter("datepicker");
+	public AssignSubject() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String classId = request.getParameter("txtclassId");
+		String[] subIds = request.getParameterValues("subId");
+		// String dob=request.getParameter("datepicker");
 		try {
-			ClassesOperation co=new ClassesOperation();
+			ClassesOperation co = new ClassesOperation();
 			co.assignSubject(classId, subIds);
 			response.sendRedirect("Home.jsp");
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		
+
 	}
 
 }

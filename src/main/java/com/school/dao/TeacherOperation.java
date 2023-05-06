@@ -39,7 +39,7 @@ public class TeacherOperation {
 	}
 
 	public void assignTeacher(String teacherId, String[] classIds) {
-		try(Session session = sf.openSession()){
+		try (Session session = sf.openSession()) {
 			Transaction tr = session.beginTransaction();
 
 			// get Classes object using classId
@@ -51,7 +51,7 @@ public class TeacherOperation {
 			List<Classes> classList = new ArrayList<>();
 			ClassesOperation co = new ClassesOperation();
 			classList = co.getClassByIds(classIds);
-			
+
 			teacher.setClassobj(classList);
 
 			session.saveOrUpdate(teacher);
@@ -61,7 +61,7 @@ public class TeacherOperation {
 
 	private Teacher getTeacherById(int id) {
 		Session session = sf.openSession();
-		TypedQuery qry = session.createQuery("from Teacher where tID="+id);
+		TypedQuery qry = session.createQuery("from Teacher where tID=" + id);
 		Teacher teacher = (Teacher) qry.getSingleResult();
 		return teacher;
 	}

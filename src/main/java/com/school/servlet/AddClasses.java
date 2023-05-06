@@ -17,32 +17,33 @@ import com.school.model.Classes;
 @WebServlet("/AddClasses")
 public class AddClasses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddClasses() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String std=request.getParameter("txtstd");
-		
+	public AddClasses() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String std = request.getParameter("txtstd");
+
 		try {
-			Classes st=new Classes();
+			Classes st = new Classes();
 			st.setStandard(Integer.parseInt(std));
-			ClassesOperation co=new ClassesOperation();
+			ClassesOperation co = new ClassesOperation();
 			co.addClasses(Integer.parseInt(std));
 			response.sendRedirect("Home.jsp");
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		
+
 	}
 
 }

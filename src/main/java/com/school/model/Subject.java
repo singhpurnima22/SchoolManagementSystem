@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "subjectinfo")
 public class Subject {
@@ -16,9 +15,9 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer subId;
 	private String subName;
-	
+
 	@ManyToOne
-	@JoinColumn(name="classID")
+	@JoinColumn(name = "classID")
 	private Classes classobj;
 
 	public Integer getSubId() {
@@ -44,7 +43,5 @@ public class Subject {
 	public void setClassobj(Classes classobj) {
 		this.classobj = classobj;
 	}
-	
-	
-	
+
 }

@@ -7,33 +7,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Login")
+@Table(name = "Login")
 public class Admin {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-private int personid;
-private String email,pwd;
-public int getPersonid() {
-	return personid;
-}
-public void setPersonid(int personid) {
-	this.personid = personid;
-}
-public String getEmail() {
-	return email;
-}
-public void setEmail(String email) {
-	this.email = email;
-}
-public String getPwd() {
-	return pwd;
-}
-public void setPwd(String pwd) {
-	this.pwd = pwd;
-}
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int personid;
+	private String email, pwd;
 
+	public int getPersonid() {
+		return personid;
+	}
 
+	public void setPersonid(int personid) {
+		this.personid = personid;
+	}
 
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 
 }

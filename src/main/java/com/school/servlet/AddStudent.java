@@ -21,31 +21,32 @@ import com.school.model.Student;
 @WebServlet("/AddStudent")
 public class AddStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddStudent() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name=request.getParameter("txtname");
-		String classId=request.getParameter("txtclassId");
-		//String dob=request.getParameter("datepicker");
+	public AddStudent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String name = request.getParameter("txtname");
+		String classId = request.getParameter("txtclassId");
+		// String dob=request.getParameter("datepicker");
 		try {
-			StudentOperation so=new StudentOperation();
+			StudentOperation so = new StudentOperation();
 			so.addStudent(name, Integer.parseInt(classId));
 			response.sendRedirect("Home.jsp");
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		
+
 	}
 
 }
